@@ -8,11 +8,16 @@ public class Player : MonoBehaviour
     public Rigidbody2D myRigidbody2D;
     public Vector2 friction;
     public float speed;
+    public float speedRun;
     public float jumpForce;
+
+    private float _currentSpeed;
 
     private void Awake()
     {
         jumpForce = 15f;
+        speed = 5f;
+        speedRun = 15f;
         friction = new Vector2(0.1f, 0);
     }
 
@@ -24,23 +29,35 @@ public class Player : MonoBehaviour
 
     private void PlayerMovement()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            myRigidbody2D.velocity = new Vector2(-speed,myRigidbody2D.velocity.y);
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            myRigidbody2D.velocity = new Vector2(speed,myRigidbody2D.velocity.y);
-        }
+       _currentSpeed = Input.GetKey(KeyCode.LeftControl) ? speedRun : speed;
 
-        if (myRigidbody2D.velocity.x > 0)
-        {
-            myRigidbody2D.velocity -= friction;
-        }
-        else if (myRigidbody2D.velocity.x < 0)
-        {
-            myRigidbody2D.velocity += friction;
-        }
+        #region Input Keys
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                myRigidbody2D.velocity = new Vector2(-_currentSpeed,myRigidbody2D.velocity.y);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                myRigidbody2D.velocity = new Vector2(_currentSpeed,myRigidbody2D.velocity.y);
+            }
+            
+        #endregion
+
+        #region Friction
+
+            switch (myRigidbody2D.velocity.x)
+            {
+                case < 0: 
+                    myRigidbody2D.velocity -= friction;
+                    break; 
+                case > 0: 
+                    myRigidbody2D.velocity += friction;
+                    break;
+            }
+
+         #endregion
+        
     }
 
     private void PlayerJump()
