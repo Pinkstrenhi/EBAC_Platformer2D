@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         PlayerJump();
-        PlayerFall();
+        /*PlayerFall();*/
         PlayerMovement();
     }
 
