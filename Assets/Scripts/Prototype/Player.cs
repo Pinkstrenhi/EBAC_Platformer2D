@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Animations;
 
 public class Player : MonoBehaviour
 {
@@ -14,9 +15,12 @@ public class Player : MonoBehaviour
         public float speedRun;
         public float jumpForce;
     [Header("Animation")] 
-        public float jumpScaleY = 1.5f;
-        public float jumpScaleX = 0.7f;
-        public float animationDuration = 0.3f;
+        public float jumpScaleY = 1f;
+        public float jumpScaleX = 0.9f;
+        public float fallScaleX = 1f;
+        public float fallScaleY = 0.9f;
+        public float animationDurationJump = 0.3f;
+        public float animationDurationFall = 0.15f;
         public Ease ease;
     
         
@@ -26,7 +30,7 @@ public class Player : MonoBehaviour
     {
         jumpForce = 15f;
         speed = 5f;
-        speedRun = 10f;
+        speedRun = 20f;
         friction = new Vector2(0.1f, 0);
         ease = Ease.OutBack;
     }
@@ -34,12 +38,13 @@ public class Player : MonoBehaviour
     private void Update()
     {
         PlayerJump();
+        PlayerFall();
         PlayerMovement();
     }
 
     private void PlayerMovement()
     {
-       _currentSpeed = Input.GetKey(KeyCode.LeftControl) ? speedRun : speed;
+       _currentSpeed = Input.GetKey(KeyCode.LeftShift) ? speedRun : speed;
 
         #region Input Keys
 
@@ -86,10 +91,20 @@ public class Player : MonoBehaviour
 
     private void PlayerJumpScale()
     {
-        /*fazer scale quando o player cai*/
-        myRigidbody2D.transform.DOScaleY(jumpScaleY,animationDuration).SetLoops(2,
+        myRigidbody2D.transform.DOScaleY(jumpScaleY,animationDurationJump).SetLoops(2,
             LoopType.Yoyo).SetEase(ease);
-        myRigidbody2D.transform.DOScaleX(jumpScaleX,animationDuration).SetLoops(2,
+        myRigidbody2D.transform.DOScaleX(jumpScaleX,animationDurationJump).SetLoops(2,
             LoopType.Yoyo).SetEase(ease);
+    }
+
+    private void PlayerFall()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            myRigidbody2D.transform.DOScaleY(fallScaleY,animationDurationFall).SetLoops(2,
+                LoopType.Yoyo).SetEase(ease);
+            myRigidbody2D.transform.DOScaleX(fallScaleX,animationDurationFall).SetLoops(2,
+                LoopType.Yoyo).SetEase(ease);
+        }
     }
 }
