@@ -14,16 +14,19 @@ public class Player : MonoBehaviour
         public float speed;
         public float speedRun;
         public float jumpForce;
-    [Header("Animation")] 
-        public float jumpScaleY = 1f;
-        public float jumpScaleX = 0.9f;
-        public float fallScaleX = 1f;
-        public float fallScaleY = 0.9f;
+    [Header("Animation Setup")] 
+        public float jumpScaleY = 0.5f;
+        public float jumpScaleX = 0.3f;
+        public float fallScaleX = 0.5f;
+        public float fallScaleY = 0.3f;
         public float animationDurationJump = 0.3f;
         public float animationDurationFall = 0.15f;
         public Ease ease;
-    
-        
+    [Header("Animation Player")] 
+        public string boolRun = "PlayerRun";
+        public string boolJump = "PlayerJump";
+        public Animator animator;
+        public float playerSwipeDuration = 0.1f;
     private float _currentSpeed;
 
     private void Awake()
@@ -38,7 +41,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         PlayerJump();
-        /*PlayerFall();*/
+        PlayerFall();
         PlayerMovement();
     }
 
@@ -51,10 +54,25 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 myRigidbody2D.velocity = new Vector2(-_currentSpeed,myRigidbody2D.velocity.y);
+                if (myRigidbody2D.transform.localScale.x != -1)
+                {
+                    myRigidbody2D.transform.DOScaleX(-1f,playerSwipeDuration);
+                }
+
+                animator.SetBool(boolRun, true);
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
                 myRigidbody2D.velocity = new Vector2(_currentSpeed,myRigidbody2D.velocity.y);
+                if (myRigidbody2D.transform.localScale.x != 1)
+                {
+                    myRigidbody2D.transform.DOScaleX(1f,playerSwipeDuration);
+                }
+                animator.SetBool(boolRun,true);
+            }
+            else
+            {
+                animator.SetBool(boolRun,false);
             }
             
         #endregion
@@ -85,6 +103,7 @@ public class Player : MonoBehaviour
             rigidbody2DTransform.localScale = Vector2.one;
             DOTween.Kill(rigidbody2DTransform);
             
+            animator.SetBool(boolJump,true);
             PlayerJumpScale();
         }
     }
@@ -105,6 +124,7 @@ public class Player : MonoBehaviour
                 LoopType.Yoyo).SetEase(ease);
             myRigidbody2D.transform.DOScaleX(fallScaleX,animationDurationFall).SetLoops(2,
                 LoopType.Yoyo).SetEase(ease);
+            animator.SetBool(boolJump,false);
         }
     }
 }
