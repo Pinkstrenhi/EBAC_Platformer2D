@@ -11,9 +11,9 @@ public class Player : MonoBehaviour
         public Rigidbody2D myRigidbody2D;
         public Vector2 friction;
     [Header("Move and Jump")]
-        public float speed;
-        public float speedRun;
-        public float jumpForce;
+        public float speed = 10f;
+        public float speedRun = 20f;
+        public float jumpForce = 15f;
     [Header("Animation Setup")] 
         public float jumpScaleY = 0.5f;
         public float jumpScaleX = 0.3f;
@@ -31,9 +31,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        jumpForce = 15f;
-        speed = 5f;
-        speedRun = 20f;
         friction = new Vector2(0.1f, 0);
         ease = Ease.OutBack;
     }
