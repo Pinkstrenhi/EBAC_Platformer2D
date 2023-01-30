@@ -5,13 +5,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int damage;
-
-    private void Awake()
-    {
-        damage = 10;
-    }
-
+    public int damage = 10;
+    public Animator animator;
+    public string triggerAttack = "Attack";
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log(other.transform.name);
@@ -19,6 +15,12 @@ public class Enemy : MonoBehaviour
         if (health != null)
         {
             health.Damage(damage);
+            PlayerAttackAnimation();
         }
+    }
+
+    private void PlayerAttackAnimation()
+    {
+        animator.SetTrigger(triggerAttack);
     }
 }
