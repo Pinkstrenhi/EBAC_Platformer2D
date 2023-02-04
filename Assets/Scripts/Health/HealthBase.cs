@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HealthBase : MonoBehaviour
 {
@@ -10,15 +11,20 @@ public class HealthBase : MonoBehaviour
     public float delayToKill;
     private int _currentLife;
     private bool _isDead;
+    [SerializeField] private FlashColor _flashColor;
     private void Awake()
     {
         Init();
+        if (_flashColor == null)
+        {
+            _flashColor = GetComponent<FlashColor>();
+        }
     }
 
     private void Init()
     {
         startLife = 10;
-        delayToKill = 0f;
+        delayToKill = 1f;
         _isDead = false;
         _currentLife = startLife;
     }
@@ -32,6 +38,11 @@ public class HealthBase : MonoBehaviour
         if (_currentLife <= 0)
         {
             Kill();
+        }
+
+        if (_flashColor != null)
+        {
+            _flashColor.Flash();
         }
     }
 
