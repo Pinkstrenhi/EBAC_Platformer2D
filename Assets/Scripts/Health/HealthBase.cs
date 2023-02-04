@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 
 public class HealthBase : MonoBehaviour
 {
+    public Action OnKill;
     public int startLife;
     public bool destroyOnKill;
     public float delayToKill;
@@ -53,5 +54,6 @@ public class HealthBase : MonoBehaviour
         {
             Destroy(gameObject,delayToKill);
         }
+        OnKill?.Invoke();
     }
 }

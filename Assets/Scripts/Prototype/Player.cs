@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
 {
     [Header("References")]
         public Rigidbody2D myRigidbody2D;
-        public Vector2 friction;
+        public Vector2 friction = new Vector2(0.1f, 0);
+        public HealthBase healthBase;
     [Header("Move and Jump")]
         public float speed = 10f;
         public float speedRun = 20f;
@@ -21,18 +22,27 @@ public class Player : MonoBehaviour
         public float fallScaleY = 0.3f;
         public float animationDurationJump = 0.3f;
         public float animationDurationFall = 0.15f;
-        public Ease ease;
+        public Ease ease = Ease.OutBack;
     [Header("Animation Player")] 
         public string boolRun = "PlayerRun";
         public string boolJump = "PlayerJump";
+        public string triggerDeath = "PlayerDeath";
         public Animator animator;
         public float playerSwipeDuration = 0.1f;
     private float _currentSpeed;
 
     private void Awake()
     {
-        friction = new Vector2(0.1f, 0);
-        ease = Ease.OutBack;
+        if (healthBase != null)
+        {
+            healthBase.OnKill += OnPLayerKill;
+        }
+    }
+
+    private void OnPLayerKill()
+    {
+        healthBase.OnKill -= OnPLayerKill; 
+        animator.SetTrigger(triggerDeath);
     }
 
     private void Update()
@@ -123,5 +133,10 @@ public class Player : MonoBehaviour
                 LoopType.Yoyo).SetEase(ease);
             animator.SetBool(boolJump,false);
         }
+    }
+
+    public void DestroyMe()
+    {
+        Destroy(gameObject);
     }
 }

@@ -414,6 +414,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+--- !u!212 &184979652 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4058282757918593861, guid: 3de838754c767a446a5473969062a84e, type: 3}
+  m_PrefabInstance: {fileID: 514924608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &200088509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1713,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &631612134 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3096084783782573798, guid: 3de838754c767a446a5473969062a84e, type: 3}
+  m_PrefabInstance: {fileID: 514924608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &632830750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,8 +1812,10 @@ GameObject:
   m_Component:
   - component: {fileID: 635779991}
   - component: {fileID: 635779993}
+  - component: {fileID: 635779995}
   - component: {fileID: 635779992}
   - component: {fileID: 635779994}
+  - component: {fileID: 635779996}
   m_Layer: 0
   m_Name: PFB_Enemy_01
   m_TagString: Untagged
@@ -1868,6 +1880,8 @@ MonoBehaviour:
   damage: 10
   animator: {fileID: 1558569373}
   triggerAttack: Attack
+  triggerDeath: Death
+  healthBase: {fileID: 635779995}
 --- !u!50 &635779994
 Rigidbody2D:
   serializedVersion: 4
@@ -1889,6 +1903,43 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &635779995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635779990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0dccbf9a477fa4388ace6f2611312e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLife: 10
+  destroyOnKill: 0
+  delayToKill: 1
+  _flashColor: {fileID: 635779996}
+--- !u!114 &635779996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635779990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e129e921d6eea2e46831f50215b0078b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 2031744851}
+  - {fileID: 184979652}
+  - {fileID: 2017971319}
+  - {fileID: 1584211141}
+  - {fileID: 867696991}
+  - {fileID: 631612134}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.05
 --- !u!4 &660079652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7342796566604627367, guid: be2468a26590ea147ad89622f0ba5af1, type: 3}
@@ -1964,6 +2015,11 @@ Transform:
   m_Father: {fileID: 597898156}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &867696991 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4402658883949824882, guid: 3de838754c767a446a5473969062a84e, type: 3}
+  m_PrefabInstance: {fileID: 514924608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &877075297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3766,6 +3822,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!212 &1584211141 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8622257899716607877, guid: 3de838754c767a446a5473969062a84e, type: 3}
+  m_PrefabInstance: {fileID: 514924608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1603804036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4917,6 +4978,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &2017971319 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2944600070154927280, guid: 3de838754c767a446a5473969062a84e, type: 3}
+  m_PrefabInstance: {fileID: 514924608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2031744851 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3294411287784764205, guid: 3de838754c767a446a5473969062a84e, type: 3}
+  m_PrefabInstance: {fileID: 514924608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2032658924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4967,6 +5038,8 @@ MonoBehaviour:
   damage: 10
   animator: {fileID: 0}
   triggerAttack: Attack
+  triggerDeath: Death
+  healthBase: {fileID: 0}
 --- !u!61 &2032658927
 BoxCollider2D:
   m_ObjectHideFlags: 0
