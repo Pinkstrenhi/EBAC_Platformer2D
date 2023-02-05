@@ -1035,6 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigidbody2D: {fileID: 404751386}
   friction: {x: 0.3, y: 0}
+  healthBase: {fileID: 404751390}
   speed: 10
   speedRun: 30
   jumpForce: 15
@@ -1047,6 +1048,7 @@ MonoBehaviour:
   ease: 0
   boolRun: PlayerRun
   boolJump: PlayerJump
+  triggerDeath: PlayerDeath
   animator: {fileID: 1863343662}
   playerSwipeDuration: 0.1
 --- !u!114 &404751390
@@ -1062,7 +1064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLife: 10
-  destroyOnKill: 1
+  destroyOnKill: 0
   delayToKill: 1
   _flashColor: {fileID: 1863343664}
 --- !u!1 &439857518
@@ -1629,6 +1631,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &615814379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615814380}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &615814380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615814379}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1987367582}
+  m_Father: {fileID: 705912569}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &623878099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,6 +1916,7 @@ MonoBehaviour:
   triggerAttack: Attack
   triggerDeath: Death
   healthBase: {fileID: 635779995}
+  timeToDestroy: 1
 --- !u!50 &635779994
 Rigidbody2D:
   serializedVersion: 4
@@ -1973,7 +2008,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1987367582}
+  - {fileID: 615814380}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4497,6 +4532,19 @@ MonoBehaviour:
   - {fileID: 1713915559}
   flashColor: {r: 0.6132076, g: 0.3725525, b: 0.3725525, a: 1}
   flashDuration: 0.3
+--- !u!114 &1863343665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448285624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ebc0040aaf4ba478b7466b0786d8cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 404751389}
 --- !u!1 &1865393262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4832,6 +4880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coins: 0
+  coinsInHud: {fileID: 1228742277}
 --- !u!4 &1987367582
 Transform:
   m_ObjectHideFlags: 0
@@ -4844,7 +4893,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 705912569}
+  m_Father: {fileID: 615814380}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2007570042
@@ -5040,6 +5089,7 @@ MonoBehaviour:
   triggerAttack: Attack
   triggerDeath: Death
   healthBase: {fileID: 0}
+  timeToDestroy: 1
 --- !u!61 &2032658927
 BoxCollider2D:
   m_ObjectHideFlags: 0

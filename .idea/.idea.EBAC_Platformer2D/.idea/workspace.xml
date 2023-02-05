@@ -8,7 +8,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Collectables/Coin/CollectableCoinsInHud.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Collectables/CollectableManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Singleton/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -109,7 +108,7 @@
       <workItem from="1675011384924" duration="4544000" />
       <workItem from="1675390265621" duration="1299000" />
       <workItem from="1675529004772" duration="6841000" />
-      <workItem from="1675538164678" duration="2675000" />
+      <workItem from="1675538164678" duration="2845000" />
     </task>
     <servers />
   </component>
