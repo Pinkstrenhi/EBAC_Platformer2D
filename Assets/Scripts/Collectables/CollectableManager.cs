@@ -17,15 +17,16 @@ public class CollectableManager : Singleton<CollectableManager>
     private void Reset()
     {
         coins = 0;
+        UpdateUI();
     }
-
-    private void Update()
-    {
-        coinsInHud.text = "x " + coins.ToString();
-    }
-
     public void AddCoins(int amount = 1)
     {
         coins += amount;
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        coinsInHud.text = "x " + coins.ToString();
     }
 }
