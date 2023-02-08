@@ -6,7 +6,7 @@ using Core.Singleton;
 
 public class CollectableManager : Singleton<CollectableManager>
 {
-    public int coins;
+    public SO_Interface coins;
     private void Start()
     {
         Reset();
@@ -14,17 +14,17 @@ public class CollectableManager : Singleton<CollectableManager>
 
     private void Reset()
     {
-        coins = 0;
+        coins.value = 0;
         UpdateUI();
     }
     public void AddCoins(int amount = 1)
     {
-        coins += amount;
+        coins.value += amount;
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        UiGameManager.UpdateTextCoins("x " + coins.ToString());
+        /*UiGameManager.UpdateTextCoins("x " + coins.value.ToString());*/
     }
 }
