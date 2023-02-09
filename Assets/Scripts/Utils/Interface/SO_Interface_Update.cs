@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SO_Interface_Update : MonoBehaviour
 {
-    public SO_Interface soInterface;
+    public SO_Int soInt;
     public TextMeshProUGUI uiTextValue;
 
     private void Update()
     {
-        uiTextValue.text = soInterface.value.ToString();
+        uiTextValue.text = soInt.value.ToString();
     }
 }

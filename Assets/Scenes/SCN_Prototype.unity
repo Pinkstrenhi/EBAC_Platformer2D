@@ -1081,15 +1081,15 @@ MonoBehaviour:
   myRigidbody2D: {fileID: 404751386}
   friction: {x: 0.3, y: 0}
   healthBase: {fileID: 404751390}
-  speed: 10
-  speedRun: 30
-  jumpForce: 15
-  jumpScaleY: 1.1
-  jumpScaleX: 0.9
-  fallScaleX: 1.1
-  fallScaleY: 0.9
-  animationDurationJump: 0.3
-  animationDurationFall: 0.15
+  soSpeed: {fileID: 11400000, guid: fa73fd4162904a84198317c83c909843, type: 2}
+  soSpeedRun: {fileID: 11400000, guid: 181e0ef4a08a8e74ea9fb863a8733c71, type: 2}
+  soJumpForce: {fileID: 11400000, guid: 1c8cb874f98728844b7392868e160841, type: 2}
+  soJumpScaleX: {fileID: 11400000, guid: 954ecb14f214a3842997c99df710b562, type: 2}
+  soJumpScaleY: {fileID: 11400000, guid: 1aaef1184f5a3894db473589bb99af32, type: 2}
+  soFallScaleX: {fileID: 11400000, guid: fe7a7745acc98034d907817804c40a2b, type: 2}
+  soFallScaleY: {fileID: 11400000, guid: 223ecd7ecc06658458e50ccd17b807b7, type: 2}
+  soAnimationDurationJump: {fileID: 11400000, guid: eb9b4591c076210419aeb55bcec04121, type: 2}
+  soAnimationDurationFall: {fileID: 11400000, guid: e44cb59165f80d449837734630a4e655, type: 2}
   ease: 0
   boolRun: PlayerRun
   boolJump: PlayerJump
@@ -3065,7 +3065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f1521ad524be54c925b012597a79f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soInterface: {fileID: 11400000, guid: 17b082cd43b6ff34c8b6ea052a6f8e0e, type: 2}
+  soInt: {fileID: 11400000, guid: 17b082cd43b6ff34c8b6ea052a6f8e0e, type: 2}
   uiTextValue: {fileID: 1228742277}
 --- !u!1 &1276976473
 GameObject:

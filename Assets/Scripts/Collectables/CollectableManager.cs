@@ -6,7 +6,7 @@ using Core.Singleton;
 
 public class CollectableManager : Singleton<CollectableManager>
 {
-    public SO_Interface coins;
+    public SO_Int coins;
     private void Start()
     {
         Reset();

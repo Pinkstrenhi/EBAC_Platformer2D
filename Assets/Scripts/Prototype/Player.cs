@@ -7,21 +7,23 @@ using UnityEngine.Animations;
 
 public class Player : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Set Up")]
         public Rigidbody2D myRigidbody2D;
         public Vector2 friction = new Vector2(0.1f, 0);
         public HealthBase healthBase;
-    [Header("Move and Jump")]
-        public float speed = 10f;
-        public float speedRun = 20f;
-        public float jumpForce = 15f;
-    [Header("Animation Setup")] 
-        public float jumpScaleY = 0.5f;
-        public float jumpScaleX = 0.3f;
-        public float fallScaleX = 0.5f;
-        public float fallScaleY = 0.3f;
-        public float animationDurationJump = 0.3f;
-        public float animationDurationFall = 0.15f;
+    [Header("Move")]
+        public SO_Float soSpeed;
+        public SO_Float soSpeedRun;
+    [Header("Jump")]
+        public SO_Float soJumpForce;
+        public SO_Float soJumpScaleX;
+        public SO_Float soJumpScaleY;
+    [Header("Fall")]
+        public SO_Float soFallScaleX;
+        public SO_Float soFallScaleY;
+    [Header("Animation References")]
+        public SO_Float soAnimationDurationJump;
+        public SO_Float soAnimationDurationFall;
         public Ease ease = Ease.OutBack;
     [Header("Animation Player")] 
         public string boolRun = "PlayerRun";
@@ -29,7 +31,7 @@ public class Player : MonoBehaviour
         public string triggerDeath = "PlayerDeath";
         public Animator animator;
         public float playerSwipeDuration = 0.1f;
-    private float _currentSpeed;
+        private float _currentSpeed;
 
     private void Awake()
     {
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
 
     private void PlayerMovement()
     {
-       _currentSpeed = Input.GetKey(KeyCode.LeftShift) ? speedRun : speed;
+       _currentSpeed = Input.GetKey(KeyCode.LeftShift) ? soSpeedRun.value : soSpeed.value;
 
         #region Input Keys
 
@@ -104,7 +106,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            myRigidbody2D.velocity = Vector2.up * jumpForce;
+            myRigidbody2D.velocity = Vector2.up * soJumpForce.value;
             
             var rigidbody2DTransform = myRigidbody2D.transform;
             rigidbody2DTransform.localScale = Vector2.one;
@@ -117,9 +119,9 @@ public class Player : MonoBehaviour
 
     private void PlayerJumpScale()
     {
-        myRigidbody2D.transform.DOScaleY(jumpScaleY,animationDurationJump).SetLoops(2,
+        myRigidbody2D.transform.DOScaleY(soJumpScaleY.value,soAnimationDurationJump.value).SetLoops(2,
             LoopType.Yoyo).SetEase(ease);
-        myRigidbody2D.transform.DOScaleX(jumpScaleX,animationDurationJump).SetLoops(2,
+        myRigidbody2D.transform.DOScaleX(soJumpScaleX.value,soAnimationDurationJump.value).SetLoops(2,
             LoopType.Yoyo).SetEase(ease);
     }
 
@@ -127,9 +129,9 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            myRigidbody2D.transform.DOScaleY(fallScaleY,animationDurationFall).SetLoops(2,
+            myRigidbody2D.transform.DOScaleY(soFallScaleY.value,soAnimationDurationFall.value).SetLoops(2,
                 LoopType.Yoyo).SetEase(ease);
-            myRigidbody2D.transform.DOScaleX(fallScaleX,animationDurationFall).SetLoops(2,
+            myRigidbody2D.transform.DOScaleX(soFallScaleX.value,soAnimationDurationFall.value).SetLoops(2,
                 LoopType.Yoyo).SetEase(ease);
             animator.SetBool(boolJump,false);
         }
