@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2b2acd770619c43b55545ef5899d63, type: 3}
+  m_Name: SO_Player_01
+  m_EditorClassIdentifier: 
+  friction: {x: 0.3, y: 0}
+  soSpeed: {fileID: 11400000, guid: fa73fd4162904a84198317c83c909843, type: 2}
+  soSpeedRun: {fileID: 11400000, guid: 181e0ef4a08a8e74ea9fb863a8733c71, type: 2}
+  soJumpForce: {fileID: 11400000, guid: 1c8cb874f98728844b7392868e160841, type: 2}
+  soJumpScaleX: {fileID: 11400000, guid: 954ecb14f214a3842997c99df710b562, type: 2}
+  soJumpScaleY: {fileID: 11400000, guid: 1aaef1184f5a3894db473589bb99af32, type: 2}
+  soFallScaleX: {fileID: 11400000, guid: fe7a7745acc98034d907817804c40a2b, type: 2}
+  soFallScaleY: {fileID: 11400000, guid: 223ecd7ecc06658458e50ccd17b807b7, type: 2}
+  soAnimationDurationJump: {fileID: 11400000, guid: e44cb59165f80d449837734630a4e655, type: 2}
+  soAnimationDurationFall: {fileID: 11400000, guid: eb9b4591c076210419aeb55bcec04121, type: 2}
+  ease: 27
+  boolRun: PlayerRun
+  boolJump: PlayerJump
+  triggerDeath: PlayerDeath
+  playerSwipeDuration: 0.1
