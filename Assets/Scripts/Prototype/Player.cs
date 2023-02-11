@@ -10,9 +10,10 @@ public class Player : MonoBehaviour
     [Header("Set Up")]
         public Rigidbody2D myRigidbody2D;
         public HealthBase healthBase;
-        public Animator animator;
+        //public Animator animator;
         public SO_Player soPlayer;
     private float _currentSpeed;
+    private Animator _currentPlayer;
 
     private void Awake()
     {
@@ -20,12 +21,13 @@ public class Player : MonoBehaviour
         {
             healthBase.OnKill += OnPLayerKill;
         }
+        _currentPlayer = Instantiate(soPlayer.player,transform);
     }
 
     private void OnPLayerKill()
     {
         healthBase.OnKill -= OnPLayerKill; 
-        animator.SetTrigger(soPlayer.triggerDeath);
+        _currentPlayer.SetTrigger(soPlayer.triggerDeath);
     }
 
     private void Update()
@@ -49,7 +51,7 @@ public class Player : MonoBehaviour
                     myRigidbody2D.transform.DOScaleX(-1f,soPlayer.playerSwipeDuration);
                 }
 
-                animator.SetBool(soPlayer.boolRun, true);
+                _currentPlayer.SetBool(soPlayer.boolRun, true);
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -58,11 +60,11 @@ public class Player : MonoBehaviour
                 {
                     myRigidbody2D.transform.DOScaleX(1f,soPlayer.playerSwipeDuration);
                 }
-                animator.SetBool(soPlayer.boolRun,true);
+                _currentPlayer.SetBool(soPlayer.boolRun,true);
             }
             else
             {
-                animator.SetBool(soPlayer.boolRun,false);
+                _currentPlayer.SetBool(soPlayer.boolRun,false);
             }
             
         #endregion
@@ -93,7 +95,7 @@ public class Player : MonoBehaviour
             rigidbody2DTransform.localScale = Vector2.one;
             DOTween.Kill(rigidbody2DTransform);
             
-            animator.SetBool(soPlayer.boolJump,true);
+            _currentPlayer.SetBool(soPlayer.boolJump,true);
             PlayerJumpScale();
         }
     }
@@ -118,7 +120,7 @@ public class Player : MonoBehaviour
             myRigidbody2D.transform.DOScaleX(soPlayer.soFallScaleX.value,
                 soPlayer.soAnimationDurationFall.value).SetLoops(2,
                 LoopType.Yoyo).SetEase(soPlayer.ease);
-            animator.SetBool(soPlayer.boolJump,false);
+            _currentPlayer.SetBool(soPlayer.boolJump,false);
         }
     }
 

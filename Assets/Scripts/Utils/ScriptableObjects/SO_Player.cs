@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SO_Player : ScriptableObject
 {
+    public Animator player;
+    public SO_String soPlayerName;
     [Header("Friction")]
         public Vector2 friction = new Vector2(0.1f, 0);
     [Header("Move")]
