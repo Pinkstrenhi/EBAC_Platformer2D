@@ -19,14 +19,16 @@ public class Player : MonoBehaviour
     {
         if (healthBase != null)
         {
-            healthBase.OnKill += OnPLayerKill;
+            healthBase.OnKill += OnPayerKill;
         }
         _currentPlayer = Instantiate(soPlayer.player,transform);
+        _currentPlayer.GetComponentInChildren<GunBase>().playerSideReference = transform;
+        _currentPlayer.GetComponentInChildren<PlayerDestroyHelper>().player = this;
     }
 
-    private void OnPLayerKill()
+    private void OnPayerKill()
     {
-        healthBase.OnKill -= OnPLayerKill; 
+        healthBase.OnKill -= OnPayerKill; 
         _currentPlayer.SetTrigger(soPlayer.triggerDeath);
     }
 
