@@ -12,6 +12,13 @@ public class Player : MonoBehaviour
         public HealthBase healthBase;
         //public Animator animator;
         public SO_Player soPlayer;
+    [Header("Jump Collision Check")] 
+        public Collider2D collider2D;
+        public float distanceToGround;
+        public float spaceToGround = 0.1f;
+        public ParticleSystem jumpVFX;
+    
+    
     private float _currentSpeed;
     private Animator _currentPlayer;
 
@@ -21,11 +28,23 @@ public class Player : MonoBehaviour
         {
             healthBase.OnKill += OnPayerKill;
         }
+
+        if (collider2D != null)
+        {
+            distanceToGround = collider2D.bounds.extents.y;
+        }
         _currentPlayer = Instantiate(soPlayer.player,transform);
         _currentPlayer.GetComponentInChildren<GunBase>().playerSideReference = transform;
         _currentPlayer.GetComponentInChildren<PlayerDestroyHelper>().player = this;
     }
 
+    private bool IsGrounded()
+    {
+        Debug.DrawRay(transform.position,-Vector2.up, Color.cyan,
+            distanceToGround + spaceToGround);
+        return Physics2D.Raycast(transform.position,-Vector2.up,
+            distanceToGround + spaceToGround);
+    }
     private void OnPayerKill()
     {
         healthBase.OnKill -= OnPayerKill; 
@@ -34,6 +53,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        IsGrounded();
         PlayerJump();
         PlayerFall();
         PlayerMovement();
@@ -89,7 +109,7 @@ public class Player : MonoBehaviour
 
     private void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             myRigidbody2D.velocity = Vector2.up * soPlayer.soJumpForce.value;
             
@@ -99,6 +119,15 @@ public class Player : MonoBehaviour
             
             _currentPlayer.SetBool(soPlayer.boolJump,true);
             PlayerJumpScale();
+            PlayJumpVFX();
+        }
+    }
+
+    private void PlayJumpVFX()
+    {
+        if (jumpVFX != null)
+        {
+            jumpVFX.Play();
         }
     }
 
