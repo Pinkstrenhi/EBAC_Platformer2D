@@ -18,6 +18,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/ButtonExit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/PlayerDestroyHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/ScriptableObjects/SO_String.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/VFX/VfxManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.6.5/Unity.Burst.CodeGen/FunctionPointerInvokeTransform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.9/Editor/Editors/CinemachineGroupComposerEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.9/Editor/Editors/CinemachinePOVEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -118,7 +119,9 @@
       <workItem from="1676139034099" duration="2491000" />
       <workItem from="1676330677049" duration="604000" />
       <workItem from="1676508003618" duration="1278000" />
-      <workItem from="1676915413434" duration="4946000" />
+      <workItem from="1676915413434" duration="4986000" />
+      <workItem from="1677197516371" duration="7000" />
+      <workItem from="1677197549589" duration="1428000" />
     </task>
     <servers />
   </component>
