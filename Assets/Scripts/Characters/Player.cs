@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
         public HealthBase healthBase;
         //public Animator animator;
         public SO_Player soPlayer;
-    [Header("Jump Collision Check")] 
+    [Header("Jump Collision Check")]    
         public Collider2D collider2D;
         public float distanceToGround;
         public float spaceToGround = 0.1f;
