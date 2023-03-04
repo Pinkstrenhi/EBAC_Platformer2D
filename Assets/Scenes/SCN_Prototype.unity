@@ -810,6 +810,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &342756788 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9218185369836859471, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+  m_PrefabInstance: {fileID: 1500137644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &354293500 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8073972946613542793, guid: 3de838754c767a446a5473969062a84e, type: 3}
@@ -1224,6 +1229,11 @@ SpriteShapeRenderer:
   m_LocalAABB:
     m_Center: {x: 11.891609, y: 1.3867385, z: 0}
     m_Extent: {x: 113.00081, y: 3.6211388, z: 0}
+--- !u!82 &457245164 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6630297345698549623, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+  m_PrefabInstance: {fileID: 1500137644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &500075093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,6 +2246,11 @@ Transform:
   m_Father: {fileID: 597898156}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &786297836 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7366978981612180912, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+  m_PrefabInstance: {fileID: 1500137644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &843720295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4284,6 +4299,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6741806995576317388, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+      propertyPath: audioSourceList.Array.data[0]
+      value: 
+      objectReference: {fileID: 342756788}
+    - target: {fileID: 6741806995576317388, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+      propertyPath: audioSourceList.Array.data[1]
+      value: 
+      objectReference: {fileID: 786297836}
+    - target: {fileID: 6741806995576317388, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+      propertyPath: audioSourceList.Array.data[2]
+      value: 
+      objectReference: {fileID: 457245164}
     - target: {fileID: 8007466312498025151, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
       propertyPath: m_RootOrder
       value: 0
