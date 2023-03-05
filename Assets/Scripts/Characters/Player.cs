@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
         public float distanceToGround;
         public float spaceToGround = 0.1f;
         public ParticleSystem jumpVFX;
-    
+    [Header("Audio")] 
+        public AudioSource audioSourceJump;
     
     private float _currentSpeed;
     private Animator _currentPlayer;
@@ -111,6 +112,10 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
+            if (audioSourceJump != null)
+            {
+                audioSourceJump.Play();
+            }
             myRigidbody2D.velocity = Vector2.up * soPlayer.soJumpForce.value;
             
             var rigidbody2DTransform = myRigidbody2D.transform;
