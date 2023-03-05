@@ -135,6 +135,8 @@ MonoBehaviour:
   particleSystem: {fileID: 0}
   timeToHide: 0
   graphicItem: {fileID: 5352992185882918234}
+  audioSource: {fileID: 0}
+  collider: {fileID: 5352992186067341592}
 --- !u!58 &5352992186067341592
 CircleCollider2D:
   m_ObjectHideFlags: 0
