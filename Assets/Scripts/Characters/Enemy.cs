@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public string triggerDeath = "Death";
     public HealthBase healthBase;
     public float timeToDestroy = 1f;
+    public AudioSource audioSource;
 
     private void Awake()
     {
@@ -24,6 +25,10 @@ public class Enemy : MonoBehaviour
     {
         healthBase.OnKill -= OnEnemyKill; 
         PlayerDeathAnimation();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
         Destroy(gameObject,timeToDestroy);
     }
     private void OnCollisionEnter2D(Collision2D other)
